@@ -21,11 +21,38 @@ body {
 }
 
 
+/* LOGHI*/
+.logo img{
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+
+
 /* LAYOUT  */
 .main-window {
     display: flex;
     width: 80%;
     min-width: 900px;
     height: 90%;
+}
+
+
+/* SIDEBAR */
+.side-bar {
+    flex-basis: 35%;
+    background: rgb(108, 223, 152);
+}
+
+/* CONTENT */
+.content {
+    flex-basis: 65%;
     background: #c5b6ec;
-  }
+}
+
+.content .middle {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+
