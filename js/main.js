@@ -96,5 +96,7 @@ const whatsapp = new Vue({
             },
         ]
     },
-    methods: {}
+    methods: {
+        
+    }
 });
