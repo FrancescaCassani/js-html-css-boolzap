@@ -1,19 +1,19 @@
 /**
  * Boolzapp Vue
  */
-var app = new Vue({
-    el: '#app',
+const whatsapp = new Vue({
+    el: '#whatsapp',
     data: {
         // nostro account
         user: {
-            name: 'Nome Utente',
-            avatar: '_io'
+            name: 'Frankie',
+            avatar: './img/avatar_io.jpg'
         },
         // Elenco contatti
         contacts: [
             {
                 name: 'Michele',
-                avatar: '_1',
+                avatar: './img/avatar_1.jpg',
                 visible: true,
                 messages: [
                     {
@@ -35,7 +35,7 @@ var app = new Vue({
             },
             {
                 name: 'Fabio',
-                avatar: '_2',
+                avatar: './img/avatar_2.jpg',
                 visible: true,
                 messages: [
                     {
@@ -57,7 +57,7 @@ var app = new Vue({
             },
             {
                 name: 'Samuele',
-                avatar: '_3',
+                avatar: './img/avatar_3.jpg',
                 visible: true,
                 messages: [
                     {
@@ -79,7 +79,7 @@ var app = new Vue({
             },
             {
                 name: 'Luisa',
-                avatar: '_4',
+                avatar: './img/avatar_4.jpg',
                 visible: true,
                 messages: [
                     {

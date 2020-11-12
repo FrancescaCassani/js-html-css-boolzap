@@ -18,7 +18,8 @@
 
             <!-- Logo Top-->
             <div class="sidebar-top">
-                <div class="logo">
+                <div 
+                class="logo">
                     <img src="./img/avatar_io.jpg" alt="user">
                     <h4>Frankie</h4>
                 </div>
@@ -52,13 +53,17 @@
             </div>
 
             <!-- Messager from users -->
-            <div class="users">
+            <div 
+            class="users"
+            v-for="(contact, i) in contacts"
+            >
+
                 <div class="logo">
-                    <img src="./img/avatar_1.jpg" alt="user">
-                    <h4>Michele</h4>
+                    <img :src="contact.avatar" alt="user">
+                    <h4>{{contact.name}}</h4>
                 </div>
     
-                <div class="logo">
+                <!-- <div class="logo">
                     <img src="./img/avatar_2.jpg" alt="user">
                     <h4>Fabio</h4>
                 </div>
@@ -71,7 +76,7 @@
                 <div class="logo">
                     <img src="./img/avatar_4.jpg" alt="user">
                     <h4>Lusia</h4>
-                </div>
+                </div> -->
             </div>
         </aside>
 
