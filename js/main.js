@@ -13,6 +13,7 @@ const whatsapp = new Vue({
             //avatar: './img/avatar_io.jpg'
         },
         // Elenco contatti
+        indexContacts: 0,
         contacts: [
             {//0
                 name: 'Michele',
@@ -102,6 +103,9 @@ const whatsapp = new Vue({
         ]
     },
     methods: {
-        
+        setChat(i) {
+            console.log(i);
+            this.indexContacts = i;
+        }
     }
 });

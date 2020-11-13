@@ -157,6 +157,10 @@ body {
     padding-left: 12px;
 }
 
+.contacts .users.active{
+    background: #eaeaea;
+}
+
 
 /* CONTENT */
 /* Content TOP */
@@ -173,13 +177,26 @@ body {
     background: #e2e2e2;
 }
 
-
 .content .top .logo h4 {
     padding-left: 8px;
 }
 
 .content .top .logo small {
     color: #8d8989;
+}
+
+.content .text {
+    flex-grow: 1;
+}
+
+.content .icons i {
+    padding: 0 8px;
+    color: #8d8989;
+}
+
+
+.content .icons i:last-child {
+    padding-right: 25px;
 }
 
 
@@ -194,34 +211,46 @@ body {
 
 }
 
+
+.content .middle .chat {
+    display: flex;
+    flex-direction: column;
+}
+
 .content .middle .sent,
 .content .middle .received{
     display: flex;
     justify-content: space-between;
     width: 300px;
-    height: 50px;
+    height: 65px;
     border-radius: 10px;
-    margin: 45px 25px 15px 25px;
+    margin: 20px 25px 15px 25px;
 }
 
 .content .middle .sent {
-    background: rgb(248, 245, 245);
-}
-
-.content .middle .received {
     align-self: flex-end;
     background: rgb(155, 247, 175);
 }
 
+.content .middle .received {
+    align-self: flex-start;
+    background: rgb(248, 245, 245);
+}
+
 .content .middle .sent h4,
 .content .middle .received h4 {
-    padding-left: 10px;
+    padding: 10px;
+    font-size: 13px;
+    padding-bottom: 5px;
 }
 
 .content .middle .sent small,
 .content .middle .received small {
     align-self: flex-end;
+    font-size: 10px;
     padding-right: 10px;
+    padding-bottom: 5px;
+    color: #8d8989;
 }
 
 
@@ -256,6 +285,8 @@ body {
 .content .footer i {
     font-size: 20px;
 }
+
+
 
 
 

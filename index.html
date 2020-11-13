@@ -52,40 +52,29 @@
             <div class="search">
                 
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input 
+                type="text" 
+                placeholder="Cerca o inizia una nuova chat">
+
             </div>
 
             <!-- Messager from users -->
             <section class="contacts">
+
                 <div 
                 v-for="(contact, i) in contacts"
-                class="users"
+                :class="['users', indexContacts == i ? 'active' : '']"
+                @click=setChat(i)
                 >
 
-                <div class="logo">
-                    <img 
-                    :src="'./img/avatar' + contact.avatar + '.jpg'"
-                    :alt="contact.name">
-                    <h4>{{contact.name}}</h4>
-                </div>
-    
-                <!-- <div class="logo">
-                    <img src="./img/avatar_2.jpg" alt="user">
-                    <h4>Fabio</h4>
-                </div>
-    
-                <div class="logo">
-                    <img src="./img/avatar_3.jpg" alt="user">
-                    <h4>Samuele</h4>
-                </div>
-    
-                <div class="logo">
-                    <img src="./img/avatar_4.jpg" alt="user">
-                    <h4>Lusia</h4>
-                </div> -->
+                   <div class="logo">
+                       <img 
+                       :src="'./img/avatar' + contact.avatar + '.jpg'"
+                       :alt="contact.name">
+                       <h4>{{contact.name}}</h4>
+                    </div>
                 </div>
             </section>
-            
         </aside>
 
         
@@ -95,26 +84,34 @@
             <!-- Chat Samuele -->
             <div class="top">
                 <div class="logo">
-                    <img src="./img/avatar_1.jpg" alt="user">
+                    <img 
+                    :src="'./img/avatar' + contacts[indexContacts].avatar + '.jpg'"
+                    >
                 </div>
 
                 <div class="text">
-                    <h4>Michele</h4>
+                    <h4>{{contacts[indexContacts].name}}</h4>
                     <small>Ultimo accesso oggi alle 10.35</small>
+                </div>
+
+                <div class="icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
                 </div>
             </div>
 
 
             <!-- Chat -->
-            <div class="middle">
+            <div 
+            class="middle">
 
-                <div class="sent">
-                    <h4>Ciao</h4>
-                    <small>ok</small>
-                </div>
-                <div class="received">
-                    <h4>Ciao</h4>
-                    <small>ok</small>
+                <div 
+                class="chat"
+                v-for=" (msg, i) in contacts[indexContacts].messages"
+                :class="msg.status">
+                    <h4>{{msg.message}}</h4>
+                    <small>{{msg.date}}</small>
                 </div>
 
             </div>
@@ -123,7 +120,9 @@
             <div class="footer">
 
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
+                <input 
+                type="text" 
+                placeholder="Scrivi un messaggio">
                 <i class="fas fa-microphone "></i>
             </div>
         </section>
