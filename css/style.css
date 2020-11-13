@@ -41,6 +41,8 @@ body {
 
 /* SIDEBAR */
 .side-bar {
+    display: flex;
+    flex-direction: column;
     flex-basis: 30%;
     background: #fff;
 }
@@ -134,6 +136,11 @@ body {
 
 
 /* USERS */
+.contacts {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .users .logo {
     display: flex;
     align-items: center;
@@ -141,10 +148,14 @@ body {
     border-bottom: 1px solid #e2e2e2;
 }
 
+.users:hover {
+    background: #e4e2e2;
+    cursor: grab;
+}
+
 .users .logo h4 {
     padding-left: 12px;
 }
-
 
 
 /* CONTENT */
@@ -162,6 +173,7 @@ body {
     background: #e2e2e2;
 }
 
+
 .content .top .logo h4 {
     padding-left: 8px;
 }
@@ -173,12 +185,46 @@ body {
 
 /* Content MIDDLE */
 .content .middle {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     overflow-y: auto;
     background-image: url("../img/mine.jpg");
     background-repeat: repeat;
-    
+
 }
+
+.content .middle .sent,
+.content .middle .received{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 45px 25px 15px 25px;
+}
+
+.content .middle .sent {
+    background: rgb(248, 245, 245);
+}
+
+.content .middle .received {
+    align-self: flex-end;
+    background: rgb(155, 247, 175);
+}
+
+.content .middle .sent h4,
+.content .middle .received h4 {
+    padding-left: 10px;
+}
+
+.content .middle .sent small,
+.content .middle .received small {
+    align-self: flex-end;
+    padding-right: 10px;
+}
+
+
 
 
 /* Content FOOTER */
@@ -197,6 +243,10 @@ body {
     outline: none;
     border-radius: 8px;
     padding-left: 15px;
+}
+
+.content .footer input:focus {
+    background: #e4e2e2;
 }
 
 .content .footer {
