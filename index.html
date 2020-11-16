@@ -117,15 +117,17 @@
             </div>
 
             <!-- Write message -->
-            <div class="footer"
-            @keyup.enter="addMsg">
+            <div class="footer">
 
                 <i class="far fa-smile"></i>
                 
                 <input 
                 type="text" 
                 placeholder="Scrivi un messaggio"
-                v-model.trim= "myMessage">
+                v-model.trim= "myMessage"
+                @keyup.enter="addMsg(indexContacts)"
+                
+                >
 
                 <i class="fas fa-microphone "></i>
             </div>

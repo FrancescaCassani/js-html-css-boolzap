@@ -5,11 +5,11 @@ const whatsapp = new Vue({
     el: '#whatsapp',
     data: {
         myMessage: '',
-        contactMessage: '',
+        //contactMessage: '',
         // nostro account
         user: {
             name: 'Frankie',
-            avatar: '_io'
+            avatar: '_io', 
 
             // :src="'./img/avatar' + 'user.avatar' + '.jpg'" 
             //avatar: './img/avatar_io.jpg'
@@ -109,25 +109,31 @@ const whatsapp = new Vue({
             console.log(i);
             this.indexContacts = i;
         },
-        addMsg() {
+        addMsg(i) {
             if (this.myMessage !== '') {
-                this.messages.push({
+
+                this.contacts[i].messages.push({
                     date: dayjs().format('DD/MM/YY, HH:mm:ss'),
                     message: this.myMessage,
                     status: 'sent'
                 });
+
                 this.myMessage = ''
+
+                //Risposta automatica
+                setTimeout(() => {
+
+                    this.botMsg(i) 
+                }, 2000);
             }
-
-            //Risposta automatica
-            setTimeout(function(){
-
-                let data = {
-                    date: dayjs().format('DD/MM/YY, HH:mm:ss'),
-                    message: 'Ok, no probs'
-                    status: 'received'
-                }
-            }1000);
+        },
+        //Risposta automatica
+        botMsg(i) {
+            this.contacts[i].messages.push({
+                date: dayjs().format('DD/MM/YY, HH:mm:ss'),
+                message: 'Me stà a scoppià la testa',
+                status: 'received'
+            });
         }
     }
 });
