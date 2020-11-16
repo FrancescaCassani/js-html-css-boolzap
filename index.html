@@ -63,7 +63,7 @@
 
                 <div 
                 v-for="(contact, i) in contacts"
-                :class="['users', indexContacts == i ? 'active' : '']"
+                :class="['users', indexContacts === i ? 'active' : '']"
                 @click=setChat(i)
                 >
 
@@ -86,6 +86,7 @@
                 <div class="logo">
                     <img 
                     :src="'./img/avatar' + contacts[indexContacts].avatar + '.jpg'"
+                    alt="contacts[indexContacts].name"
                     >
                 </div>
 
@@ -107,9 +108,8 @@
             class="middle">
 
                 <div 
-                class="chat"
-                v-for=" (msg, i) in contacts[indexContacts].messages"
-                :class="msg.status">
+                v-for="msg in contacts[indexContacts].messages"
+                :class="['chat', msg.status]">
                     <h4>{{msg.message}}</h4>
                     <small>{{msg.date}}</small>
                 </div>
@@ -117,17 +117,27 @@
             </div>
 
             <!-- Write message -->
-            <div class="footer">
+            <div class="footer"
+            @keyup.enter="addMsg">
 
                 <i class="far fa-smile"></i>
+                
                 <input 
                 type="text" 
-                placeholder="Scrivi un messaggio">
+                placeholder="Scrivi un messaggio"
+                v-model.trim= "myMessage">
+
                 <i class="fas fa-microphone "></i>
             </div>
         </section>
     </div>
 
+
+
+    <!-- DAY JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>
+
+    <!-- VUE -->
 <script src="./js/main.js"></script>
     
 </body>

@@ -239,7 +239,7 @@ body {
 
 .content .middle .sent h4,
 .content .middle .received h4 {
-    padding: 10px;
+    padding: 15px;
     font-size: 13px;
     padding-bottom: 5px;
 }
@@ -274,8 +274,10 @@ body {
     padding-left: 15px;
 }
 
+.content .footer input:hover ,
 .content .footer input:focus {
-    background: #e4e2e2;
+    background: #fff;
+    border: 2px solid rgb(51, 51, 236);
 }
 
 .content .footer {

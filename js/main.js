@@ -4,6 +4,8 @@
 const whatsapp = new Vue({
     el: '#whatsapp',
     data: {
+        myMessage: '',
+        contactMessage: '',
         // nostro account
         user: {
             name: 'Frankie',
@@ -13,7 +15,7 @@ const whatsapp = new Vue({
             //avatar: './img/avatar_io.jpg'
         },
         // Elenco contatti
-        indexContacts: 0,
+        indexContacts: 0, //variabile che tiene traccia del contatto attivo
         contacts: [
             {//0
                 name: 'Michele',
@@ -106,6 +108,37 @@ const whatsapp = new Vue({
         setChat(i) {
             console.log(i);
             this.indexContacts = i;
+        },
+        addMsg() {
+            if (this.myMessage !== '') {
+                this.messages.push({
+                    date: dayjs().format('DD/MM/YY, HH:mm:ss'),
+                    message: this.myMessage,
+                    status: 'sent'
+                });
+                this.myMessage = ''
+            }
+
+            //Risposta automatica
+            setTimeout(function(){
+
+                let data = {
+                    date: dayjs().format('DD/MM/YY, HH:mm:ss'),
+                    message: 'Ok, no probs'
+                    status: 'received'
+                }
+            }1000);
         }
     }
 });
+
+// nel primo caso abbiamo usato i (noi abbiamo scritto index) nei contatti perchè ci serviva un indice da usare al momento del click su un nuovo contatto
+// 11:22
+// li quindi l'index ci diceva la posizione del contatto all'interno dell'array
+// 11:22
+// utilissimo quindi poi per aggiornare la nostra variabile indexContacts
+// New
+// 11:23
+// nei messaggi invece non l'abbiamo utilizzata perchè in questo momento li non abbiamo avuto bisogno di sapere la loro posizione all'interno del loro array messaggi
+// 11:23
+// abbiamo usato solo il primo parametro (message) per stamparne le informazioni
