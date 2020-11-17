@@ -215,6 +215,7 @@ body {
 .content .middle .chat {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .content .middle .sent,
@@ -235,6 +236,26 @@ body {
 .content .middle .received {
     align-self: flex-start;
     background: rgb(248, 245, 245);
+}
+
+.sent .quadrato {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgb(155, 247, 175);
+    right: -8px;
+    bottom: 14px;
+    transform: rotate(45deg);
+}
+
+.received .quadrato {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgb(248, 245, 245);
+    left: -8px;
+    bottom: 14px;
+    transform: rotate(45deg);
 }
 
 .content .middle .sent h4,

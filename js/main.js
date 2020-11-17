@@ -96,7 +96,16 @@ const whatsapp = new Vue({
                     }
                 ],
             },
-        ]
+        ],
+        answers: [
+            "Brunch is the new cenetta",
+            "Abbonaaaaaa",
+            "Me stà a scoppià la testa",
+            "vivo la vita un DPCM alla volta",
+            "Giretto in moto?",
+            "Cappuccio veloce?",
+            "Oggi non ce la posso fare",
+          ]
     },
     methods: {
         setChat(i) {
@@ -122,19 +131,19 @@ const whatsapp = new Vue({
 
                 this.myMessage = '', 
 
-                //Risposta automatica BOT al mio messaggio
+                //Risposta automatica BOT al mio messaggio con risposte random
                 setTimeout(() => {
 
                     activeMassages.push({ 
                         date: dayjs().format('DD/MM/YY, HH:mm:ss'),
-                        message: 'Me stà a scoppià la testa',
+                        message: this.answers[Math.floor(Math.random() * 5)],
                         status: 'received'
                     });
-                }, 2000);
+                }, 2000); 
             }
         },
         searchContact() {
-
+            //Cercare una lettera nei contatti
             this.contacts.forEach((element) => { 
 
                 const ricerca = this.contactSearchInput.toLowerCase();
