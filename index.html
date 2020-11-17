@@ -51,6 +51,7 @@
             <div class="search">
                 
                 <i class="fas fa-search"></i>
+
                 <input 
                 @keyup="searchContact"
                 type="text" 
@@ -72,10 +73,12 @@
                 >
 
                    <div class="logo">
+
                        <img 
                        :src="'./img/avatar' + contact.avatar + '.jpg'"
                        :alt="contact.name">
                        <h4>{{contact.name}}</h4>
+                       
                     </div>
                 </div>
             </section>
@@ -96,7 +99,7 @@
 
                 <div class="text">
                     <h4>{{contacts[indexContacts].name}}</h4>
-                    <small>Ultimo accesso oggi alle 10.35</small>
+                    <small>{{contacts[indexContacts].messages[contacts[indexContacts].messages.length - 1].date}}</small>
                 </div>
                 
 

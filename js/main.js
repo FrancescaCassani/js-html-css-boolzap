@@ -96,6 +96,23 @@ const whatsapp = new Vue({
                     }
                 ],
             },
+            {
+                name: 'Luca',
+                avatar: '_6',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Birretta?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Assolutamente si',
+                        status: 'received'
+                    }
+                ],
+            },
         ],
         answers: [
             "Brunch is the new cenetta",
