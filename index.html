@@ -48,13 +48,16 @@
 
              
             <!-- New chat -->
-            <!-- INSERISCI LABEL -->
             <div class="search">
                 
                 <i class="fas fa-search"></i>
                 <input 
+                @keyup="searchContact"
                 type="text" 
-                placeholder="Cerca o inizia una nuova chat">
+                name="search"
+                placeholder="Cerca o inizia una nuova chat"
+                v-model.trim="contactSearchInput"
+                >
 
             </div>
 
@@ -63,6 +66,7 @@
 
                 <div 
                 v-for="(contact, i) in contacts"
+                v-show="contact.visible" 
                 :class="['users', indexContacts === i ? 'active' : '']"
                 @click=setChat(i)
                 >
@@ -86,7 +90,7 @@
                 <div class="logo">
                     <img 
                     :src="'./img/avatar' + contacts[indexContacts].avatar + '.jpg'"
-                    alt="contacts[indexContacts].name"
+                    :alt="contacts[indexContacts].name"
                     >
                 </div>
 
@@ -126,7 +130,6 @@
                 placeholder="Scrivi un messaggio"
                 v-model.trim= "myMessage"
                 @keyup.enter="addMsg(indexContacts)"
-                
                 >
 
                 <i class="fas fa-microphone "></i>

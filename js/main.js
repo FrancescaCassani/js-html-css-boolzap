@@ -5,23 +5,17 @@ const whatsapp = new Vue({
     el: '#whatsapp',
     data: {
         myMessage: '',
-        //contactMessage: '',
-        // nostro account
         user: {
             name: 'Frankie',
             avatar: '_io', 
-
-            // :src="'./img/avatar' + 'user.avatar' + '.jpg'" 
-            //avatar: './img/avatar_io.jpg'
         },
         // Elenco contatti
-        indexContacts: 0, //variabile che tiene traccia del contatto attivo
+        indexContacts: 0, 
+        contactSearchInput: '',
         contacts: [
-            {//0
+            {
                 name: 'Michele',
                 avatar: '_1',
-                //:src="`./img/avatar${contact.avatar}.jpg`"
-                
                 visible: true,
                 messages: [
                     {
@@ -41,7 +35,7 @@ const whatsapp = new Vue({
                     }
                 ],
             },
-            {//1
+            {
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
@@ -63,7 +57,7 @@ const whatsapp = new Vue({
                     }
                 ],
             },
-            {//2
+            {
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
@@ -85,7 +79,7 @@ const whatsapp = new Vue({
                     }
                 ],
             },
-            {//3
+            {
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
@@ -106,45 +100,56 @@ const whatsapp = new Vue({
     },
     methods: {
         setChat(i) {
+            //Verificare la posizione attiva del contatto
             console.log(i);
+
             this.indexContacts = i;
         },
         addMsg(i) {
-            if (this.myMessage !== '') {
+            //Scrivere un nuovo messaggio
+            console.log(this.myMessage);
 
-                this.contacts[i].messages.push({
+            if (this.myMessage !== '') {  
+
+                //Variabile che migliora la scrittura del codice
+                const activeMassages = this.contacts[this.indexContacts].messages
+
+                activeMassages.push({ 
                     date: dayjs().format('DD/MM/YY, HH:mm:ss'),
                     message: this.myMessage,
                     status: 'sent'
                 });
 
-                this.myMessage = ''
+                this.myMessage = '', 
 
-                //Risposta automatica
+                //Risposta automatica BOT al mio messaggio
                 setTimeout(() => {
 
-                    this.botMsg(i) 
+                    activeMassages.push({ 
+                        date: dayjs().format('DD/MM/YY, HH:mm:ss'),
+                        message: 'Me stà a scoppià la testa',
+                        status: 'received'
+                    });
                 }, 2000);
             }
         },
-        //Risposta automatica
-        botMsg(i) {
-            this.contacts[i].messages.push({
-                date: dayjs().format('DD/MM/YY, HH:mm:ss'),
-                message: 'Me stà a scoppià la testa',
-                status: 'received'
+        searchContact() {
+
+            this.contacts.forEach((element) => { 
+
+                const ricerca = this.contactSearchInput.toLowerCase();
+
+                if (element.name.toLowerCase().includes(ricerca, 0)) {
+                    element.visible = true;
+                  } else {
+                    element.visible = false;
+                  }
             });
         }
     }
 });
 
-// nel primo caso abbiamo usato i (noi abbiamo scritto index) nei contatti perchè ci serviva un indice da usare al momento del click su un nuovo contatto
-// 11:22
-// li quindi l'index ci diceva la posizione del contatto all'interno dell'array
-// 11:22
-// utilissimo quindi poi per aggiornare la nostra variabile indexContacts
-// New
-// 11:23
-// nei messaggi invece non l'abbiamo utilizzata perchè in questo momento li non abbiamo avuto bisogno di sapere la loro posizione all'interno del loro array messaggi
-// 11:23
-// abbiamo usato solo il primo parametro (message) per stamparne le informazioni
+
+
+
+
