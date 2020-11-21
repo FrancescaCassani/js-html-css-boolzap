@@ -136,7 +136,7 @@ const whatsapp = new Vue({
             },
             {
               title: 'Copia',
-            },
+            }
           ],
 
     },
@@ -192,11 +192,6 @@ const whatsapp = new Vue({
             const activeMassages = this.contacts[this.activeContacts].messages;
 
             activeMassages.splice(i, 1);
-        },
-        toggle() {
-            this.showMenu = !this.showMenu;
-
-            console.log(this.showMenu);
         }
     }
 });

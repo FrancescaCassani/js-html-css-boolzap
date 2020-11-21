@@ -127,7 +127,7 @@
                             <a href="#" class="icon"> 
                                 <i class="fas fa-angle-down"
                                 class="with-dropdwon"
-                                @click="toggle()">
+                                @click="showMenu = !showMenu">
                                 </i>
                                 <i 
                                 class="fas fa-trash-alt"
@@ -137,7 +137,8 @@
                             <!-- Menu nascosto -->
                             <div 
                             class="dropdown-menu"
-                            v-for="(option, i) in options">
+                            v-for="(option, i) in options"
+                            v-if="showMenu">
                                 <a href="#"> {{option.title}} </a>
                             </div>
                         </li>
