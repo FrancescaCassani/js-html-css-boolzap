@@ -10,8 +10,9 @@ const whatsapp = new Vue({
             avatar: '_io', 
         },
         // Elenco contatti
-        indexContacts: 0, 
+        activeContacts: 0, 
         contactSearchInput: '',
+        showMenu: false,
         contacts: [
             {
                 name: 'Michele',
@@ -122,14 +123,29 @@ const whatsapp = new Vue({
             "Giretto in moto?",
             "Cappuccio veloce?",
             "Oggi non ce la posso fare",
-          ]
+          ],
+        options: [
+            {
+             title: 'Importante',
+            },
+            {
+              title: 'Rispondi',
+            },
+            {
+              title: 'Inoltra',
+            },
+            {
+              title: 'Copia',
+            },
+          ],
+
     },
     methods: {
         setChat(i) {
             //Verificare la posizione attiva del contatto
             console.log(i);
 
-            this.indexContacts = i;
+            this.activeContacts = i;
         },
         addMsg(i) {
             //Scrivere un nuovo messaggio
@@ -138,7 +154,7 @@ const whatsapp = new Vue({
             if (this.myMessage !== '') {  
 
                 //Variabile che migliora la scrittura del codice
-                const activeMassages = this.contacts[this.indexContacts].messages
+                const activeMassages = this.contacts[this.activeContacts].messages
 
                 activeMassages.push({ 
                     date: dayjs().format('DD/MM/YY, HH:mm:ss'),
@@ -153,7 +169,7 @@ const whatsapp = new Vue({
 
                     activeMassages.push({ 
                         date: dayjs().format('DD/MM/YY, HH:mm:ss'),
-                        message: this.answers[Math.floor(Math.random() * 5)],
+                        message: this.answers[Math.floor(Math.random() * 7)],
                         status: 'received'
                     });
                 }, 2000); 
@@ -171,6 +187,16 @@ const whatsapp = new Vue({
                     element.visible = false;
                   }
             });
+        },
+        deleteMsg(i) {
+            const activeMassages = this.contacts[this.activeContacts].messages;
+
+            activeMassages.splice(i, 1);
+        },
+        toggle() {
+            this.showMenu = !this.showMenu;
+
+            console.log(this.showMenu);
         }
     }
 });

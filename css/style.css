@@ -218,9 +218,7 @@ body {
     overflow-y: auto;
     background-image: url("../img/mine.jpg");
     background-repeat: repeat;
-
 }
-
 
 .content .middle .chat {
     display: flex;
@@ -232,7 +230,7 @@ body {
 .content .middle .received{
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 380px;
     height: 65px;
     border-radius: 10px;
     margin: 20px 25px 15px 25px;
@@ -268,6 +266,26 @@ body {
     transform: rotate(45deg);
 }
 
+.content .middle a i {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    transition: color .3s;
+}
+
+.content .middle .icon .fa-trash-alt {
+    position: absolute;
+    right: 45px;
+    top: 15px;
+    font-size: 12px;
+}
+
+.content .middle a i:hover,
+.content .middle a i:focus{
+    color: #8d8989;
+    cursor: grab;
+}
+
 .content .middle .sent h4,
 .content .middle .received h4 {
     padding: 15px;
@@ -282,10 +300,47 @@ body {
     padding-right: 10px;
     padding-bottom: 5px;
     color: #8d8989;
+    text-align: center;
+}
+
+.content .middle li.with-dropdwon {
+    position: relative;
+}
+
+.content .middle .dropdown-menu {
+    /* display: none; */
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    white-space: nowrap;
+    margin: 10px auto;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.content .middle .sent .dropdown-menu {
+    background: #9bf7af;
+}
+
+.content .middle .received .dropdown-menu {
+    background: #f8f5f5;
 }
 
 
 
+.content .middle ul {
+    list-style: none;
+}
+
+
+.content .middle .dropdown-menu a {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    padding: 4px;
+    text-decoration: none;
+}
 
 /* Content FOOTER */
 .content .footer {
