@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Clone Whatsapp Web</title>
@@ -46,20 +46,15 @@
                 </div>
             </div>
 
-             
             <!-- New chat -->
             <div class="search">
-                
                 <i class="fas fa-search"></i>
-
                 <input 
                 @keyup="searchContact"
                 type="text" 
                 name="search"
                 placeholder="Cerca o inizia una nuova chat"
-                v-model.trim="contactSearchInput"
-                >
-
+                v-model.trim="contactSearchInput">
             </div>
 
             <!-- Messager from users -->
@@ -69,16 +64,13 @@
                 v-for="(contact, i) in contacts"
                 v-show="contact.visible" 
                 :class="['users', activeContacts === i ? 'active' : '']"
-                @click=setChat(i)
-                >
+                @click=setChat(i)>
 
                    <div class="logo">
-
                        <img 
                        :src="'./img/avatar' + contact.avatar + '.jpg'"
                        :alt="contact.name">
                        <h4>{{contact.name}}</h4>
-                       
                     </div>
                 </div>
             </section>
@@ -102,7 +94,6 @@
                     <small>{{contacts[activeContacts].messages[contacts[activeContacts].messages.length - 1].date}}</small>
                 </div>
                 
-
                 <div class="icons">
                     <i class="fas fa-search"></i>
                     <i class="fas fa-paperclip"></i>
@@ -114,9 +105,8 @@
             <!-- Chat -->
             <div 
             class="middle">
-
                 <div 
-                v-for="msg in contacts[activeContacts].messages"
+                v-for="(msg, i) in contacts[activeContacts].messages"
                 :class="['chat', msg.status]">
                     <h4>{{msg.message}}</h4>
                     <small>{{msg.date}}</small>
@@ -125,25 +115,27 @@
                     <ul>
                         <li>
                             <a href="#" class="icon"> 
-                                <i class="fas fa-angle-down"
+                                <i 
+                                class="fas fa-angle-down"
                                 class="with-dropdwon"
-                                @click="showMenu = !showMenu">
-                                </i>
+                                @click="showOption(index)"
+                                ></i>
                                 <i 
                                 class="fas fa-trash-alt"
                                 @click="deleteMsg(i)"></i>
                             </a>
 
                             <!-- Menu nascosto -->
-                            <div 
+                            <!-- <div 
                             class="dropdown-menu"
-                            v-for="(option, i) in options"
-                            v-if="showMenu">
-                                <a href="#"> {{option.title}} </a>
-                            </div>
+                            :class="messageActive.show && messageActive.index === index"
+                            >
+                                <a 
+                                v-for="(option, i) in options"
+                                href="#"> {{option.title}} </a>
+                            </div> -->
                         </li>
                     </ul>
-                    
                     <div class="quadrato"></div>
                 </div>
 
@@ -151,21 +143,16 @@
 
             <!-- Write message -->
             <div class="footer">
-
                 <i class="far fa-smile"></i>
-                
                 <input 
                 type="text" 
                 placeholder="Scrivi un messaggio"
                 v-model.trim= "myMessage"
-                @keyup.enter="addMsg(activeContacts)"
-                >
-
+                @keyup.enter="addMsg(activeContacts)">
                 <i class="fas fa-microphone "></i>
             </div>
         </section>
     </div>
-
 
 
     <!-- DAY JS -->
